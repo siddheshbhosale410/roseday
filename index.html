@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title> For You MY LOVE A!t@r| Rose Day</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --rose-soft: #f8e6e9;
+            --rose-muted: #d8a3a9;
+            --cream: #faf6f2;
+            --neutral-light: #e8e2dc;
+            --neutral-dark: #5a5353;
+            --accent-subtle: #c97d87;
+            --pale-rose: #f3d5d8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        html {
+            height: 100%;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--cream);
+            color: var(--neutral-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            font-weight: 300;
+            max-width: 100vw;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Responsive Container */
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+        }
+        
+        /* Header */
+        .header {
+            padding: 30px 0 20px;
+            text-align: center;
+            background-color: var(--cream);
+            z-index: 50;
+            border-bottom: 1px solid rgba(216, 163, 169, 0.2);
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 0 10px;
+        }
+        
+        .heart-btn {
+            background: none;
+            border: none;
+            color: var(--accent-subtle);
+            font-size: 1.4rem;
+            cursor: pointer;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .heart-btn:hover {
+            background-color: rgba(201, 125, 135, 0.1);
+            transform: scale(1.1);
+        }
+        
+        .heart-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .title {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: 2.8rem;
+            letter-spacing: 0.5px;
+            color: var(--neutral-dark);
+            margin-bottom: 5px;
+        }
+        
+        .subtitle {
+            font-size: 0.9rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--accent-subtle);
+            font-weight: 300;
+        }
+        
+        /* Name Popup */
+        .name-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1001;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .name-popup.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+        }
+        
+        .name-popup-content {
+            background: var(--cream);
+            width: 90%;
+            max-width: 400px;
+            padding: 35px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            animation: popupIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .name-popup h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--neutral-dark);
+        }
+        
+        .name-input {
+            width: 100%;
+            padding: 15px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            border: 1px solid var(--rose-muted);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            background: white;
+            color: var(--neutral-dark);
+            transition: all 0.3s ease;
+        }
+        
+        .name-input:focus {
+            outline: none;
+            border-color: var(--accent-subtle);
+            box-shadow: 0 0 0 3px rgba(201, 125, 135, 0.1);
+        }
+        
+        .name-save-btn {
+            background: var(--accent-subtle);
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .name-save-btn:hover {
+            background-color: #b86c77;
+            transform: translateY(-2px);
+        }
+        
+        .name-save-btn:active {
+            transform: scale(0.98);
+        }
+        
+        .girlfriend-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            color: var(--accent-subtle);
+            margin-top: 10px;
+            font-weight: 500;
+            min-height: 2.5rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 40px 0;
+        }
+        
+        .hero-content {
+            width: 100%;
+            text-align: center;
+            z-index: 5;
+            position: relative;
+            padding: 20px;
+        }
+        
+        .hero-rose {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 40px;
+            position: relative;
+            animation: gentleFloat 8s ease-in-out infinite;
+        }
+        
+        .hero-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            line-height: 1.5;
+            margin-bottom: 30px;
+            color: var(--neutral-dark);
+            font-weight: 300;
+            opacity: 0;
+            animation: fadeInUp 1.2s ease 0.8s forwards;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Interactive Game - Responsive */
+        .game-section {
+            padding: 80px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 50px;
+            font-weight: 400;
+            color: var(--neutral-dark);
+        }
+        
+        .rose-game {
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .rose-garden {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 20px;
+            justify-items: center;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        @media (max-width: 600px) {
+            .rose-garden {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 15px;
+            }
+        }
+        
+        .rose-item {
+            width: 110px;
+            height: 110px;
+            background-color: var(--rose-soft);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(201, 125, 135, 0.1);
+        }
+        
+        .rose-item:hover:not(.revealed) {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(201, 125, 135, 0.2);
+        }
+        
+        .rose-item:active:not(.revealed) {
+            transform: scale(0.95);
+        }
+        
+        .rose-item.revealed {
+            background-color: var(--accent-subtle);
+            transform: scale(1.08);
+            box-shadow: 0 8px 24px rgba(201, 125, 135, 0.3);
+        }
+        
+        .rose-svg {
+            width: 60px;
+            height: 60px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Message Popup - IMPROVED for all devices */
+        .message-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 1002;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .message-popup.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+        }
+        
+        .message-popup-content {
+            background: white;
+            width: 90%;
+            max-width: 500px;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+            animation: messagePopupIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            margin: 20px;
+        }
+        
+        .message-popup-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, var(--rose-soft), var(--accent-subtle), var(--rose-soft));
+        }
+        
+        .message-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            line-height: 1.6;
+            color: var(--neutral-dark);
+            margin-bottom: 30px;
+            font-style: italic;
+            padding: 15px;
+        }
+        
+        .close-message-btn {
+            background: var(--accent-subtle);
+            color: white;
+            border: none;
+            padding: 14px 40px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .close-message-btn:hover {
+            background-color: #b86c77;
+            transform: translateY(-2px);
+        }
+        
+        .close-message-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .message-rose {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+        }
+        
+        /* Love Notes Section (Replaces Photos) */
+        .notes-section {
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(248, 230, 233, 0.1) 0%, rgba(243, 213, 216, 0.05) 100%);
+        }
+        
+        .notes-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(248, 230, 233, 0.1) 0%, rgba(243, 213, 216, 0.05) 100%);
+            z-index: -1;
+        }
+        
+        .notes-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 600px) {
+            .notes-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+        
+        .note-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-top: 4px solid var(--accent-subtle);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .note-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(201, 125, 135, 0.15);
+        }
+        
+        .note-card::before {
+            content: "❝";
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            font-size: 4rem;
+            color: var(--rose-soft);
+            opacity: 0.5;
+            font-family: serif;
+        }
+        
+        .note-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            line-height: 1.6;
+            color: var(--neutral-dark);
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 20px;
+        }
+        
+        .note-date {
+            font-size: 0.85rem;
+            color: var(--rose-muted);
+            text-align: right;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 60px 0 40px;
+            color: var(--neutral-dark);
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            position: relative;
+        }
+        
+        .footer-rose {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+            opacity: 0.7;
+        }
+        
+        .closing-line {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Floating Petals */
+        .petals-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .petal-svg {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            opacity: 0.15;
+            animation: floatPetals 20s infinite linear;
+        }
+        
+        /* Animations */
+        @keyframes floatPetals {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.15; }
+            90% { opacity: 0.15; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+        
+        @keyframes gentleFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(1deg); }
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes bloom {
+            0% { transform: scale(0.8); opacity: 0.7; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        @keyframes popupIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        @keyframes messagePopupIn {
+            0% { opacity: 0; transform: scale(0.7) rotate(-5deg); }
+            100% { opacity: 1; transform: scale(1) rotate(0); }
+        }
+        
+        /* Progress Indicator */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(to right, var(--rose-soft), var(--accent-subtle));
+            z-index: 100;
+            transition: width 0.1s ease;
+        }
+        
+        /* Responsive Typography */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-text {
+                font-size: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .message-text {
+                font-size: 1.4rem;
+            }
+            
+            .closing-line {
+                font-size: 1.5rem;
+            }
+            
+            .hero-rose {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .rose-item {
+                width: 100px;
+                height: 100px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .title {
+                font-size: 1.8rem;
+            }
+            
+            .hero-text {
+                font-size: 1.3rem;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .message-text {
+                font-size: 1.2rem;
+            }
+            
+            .girlfriend-name {
+                font-size: 1.8rem;
+            }
+            
+            .rose-item {
+                width: 90px;
+                height: 90px;
+            }
+            
+            .rose-svg {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Indicator -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+    
+    <div class="petals-container" id="petalsContainer"></div>
+    
+    <!-- Name Popup -->
+    <div class="name-popup" id="namePopup">
+        <div class="name-popup-content">
+            <h3>Enter Her Name</h3>
+            <input type="text" class="name-input" id="nameInput" placeholder="Type her name here..." maxlength="20">
+            <button class="name-save-btn" id="nameSaveBtn">Save Name</button>
+        </div>
+    </div>
+    
+    <!-- Message Popup -->
+    <div class="message-popup" id="messagePopup">
+        <div class="message-popup-content">
+            <div class="message-rose" id="messageRose"></div>
+            <div class="message-text" id="messageText"></div>
+            <button class="close-message-btn" id="closeMessageBtn">Close</button>
+        </div>
+    </div>
+    
+    <div class="container">
+        <header class="header">
+            <div class="header-top">
+                <button class="heart-btn" id="heartBtn">
+                    <i class="fas fa-heart"></i>
+                </button>
+                <div class="header-title">
+                    <h1 class="title">For You</h1>
+                    <p class="subtitle">Rose Day</p>
+                </div>
+                <div style="width: 45px;"></div> <!-- Spacer for symmetry -->
+            </div>
+            <div class="girlfriend-name" id="girlfriendName"></div>
+        </header>
+        
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-rose" id="heroRose"></div>
+                <p class="hero-text">
+                    In quiet moments, I find myself appreciating the subtle ways you make ordinary days feel meaningful.
+                </p>
+                <p class="hero-text" style="animation-delay: 1s;">
+                    Like a single rose that needs no arrangement—your presence is enough.
+                </p>
+            </div>
+        </section>
+        
+        <section class="game-section">
+            <h2 class="section-title">Pick a Rose</h2>
+            <p style="text-align: center; color: var(--accent-subtle); margin-bottom: 40px; font-size: 1rem;">
+                Click on a rose to reveal a special message
+            </p>
+            <div class="rose-game">
+                <div class="rose-garden" id="roseGarden">
+                    <!-- Roses will be inserted here by JavaScript -->
+                </div>
+            </div>
+        </section>
+        
+        <section class="notes-section">
+            <div class="notes-background"></div>
+            
+            <h2 class="section-title">Love Notes</h2>
+            <p style="text-align: center; color: var(--neutral-dark); margin-top: -10px; font-style: italic; font-size: 1rem; margin-bottom: 50px;">
+                Little reminders of what you mean to me
+            </p>
+            
+            <div class="notes-container" id="notesContainer"></div>
+        </section>
+        
+        <footer class="footer">
+            <div class="footer-rose" id="footerRose"></div>
+            <p class="closing-line">
+                To the quiet understanding that needs few words, and the presence that speaks volumes.
+            </p>
+            <p style="margin-top: 15px;">—</p>
+            <p style="margin-top: 20px; font-size: 0.9rem;">Made with ❤️ for Rose Day</p>
+        </footer>
+    </div>
+
+    <script>
+        // ============================================
+        // ROSE SVG GENERATOR
+        // ============================================
+        function createRoseSVG(scale = 1, isBloom = false) {
+            const svgNS = "http://www.w3.org/2000/svg";
+            const svg = document.createElementNS(svgNS, "svg");
+            svg.setAttribute("viewBox", "0 0 100 100");
+            svg.setAttribute("class", "rose-svg");
+            svg.style.width = `${60 * scale}px`;
+            svg.style.height = `${60 * scale}px`;
+            
+            if (isBloom) {
+                // Create a beautiful blooming rose with layers
+                
+                // Outer petals (darker)
+                for(let i = 0; i < 8; i++) {
+                    const angle = (i / 8) * Math.PI * 2;
+                    const petal = document.createElementNS(svgNS, "path");
+                    
+                    const cx = 50 + Math.cos(angle) * 22;
+                    const cy = 50 + Math.sin(angle) * 22;
+                    
+                    // Create heart-shaped petal
+                    petal.setAttribute("d", `M${cx},${cy} 
+                        C${cx+8},${cy-15} ${cx+20},${cy-10} ${cx+15},${cy}
+                        C${cx+10},${cy+10} ${cx},${cy+15} ${cx-5},${cy+5}
+                        C${cx-10},${cy-5} ${cx-8},${cy-15} ${cx},${cy}
+                        Z`);
+                    petal.setAttribute("fill", "var(--accent-subtle)");
+                    petal.setAttribute("opacity", "0.9");
+                    petal.setAttribute("transform", `rotate(${angle * 180 / Math.PI}, ${cx}, ${cy})`);
+                    
+                    svg.appendChild(petal);
+                }
+                
+                // Middle petals (medium color)
+                for(let i = 0; i < 6; i++) {
+                    const angle = (i / 6) * Math.PI * 2;
+                    const petal = document.createElementNS(svgNS, "ellipse");
+                    
+                    const rx = 12;
+                    const ry = 18;
+                    const cx = 50 + Math.cos(angle) * 15;
+                    const cy = 50 + Math.sin(angle) * 15;
+                    const rotate = (angle * 180 / Math.PI) + 90;
+                    
+                    petal.setAttribute("cx", cx);
+                    petal.setAttribute("cy", cy);
+                    petal.setAttribute("rx", rx);
+                    petal.setAttribute("ry", ry);
+                    petal.setAttribute("transform", `rotate(${rotate}, ${cx}, ${cy})`);
+                    petal.setAttribute("fill", "var(--rose-muted)");
+                    petal.setAttribute("opacity", "0.9");
+                    
+                    svg.appendChild(petal);
+                }
+                
+                // Inner petals (lighter)
+                for(let i = 0; i < 4; i++) {
+                    const angle = (i / 4) * Math.PI * 2;
+                    const petal = document.createElementNS(svgNS, "ellipse");
+                    
+                    const rx = 8;
+                    const ry = 12;
+                    const cx = 50 + Math.cos(angle) * 8;
+                    const cy = 50 + Math.sin(angle) * 8;
+                    const rotate = (angle * 180 / Math.PI) + 90;
+                    
+                    petal.setAttribute("cx", cx);
+                    petal.setAttribute("cy", cy);
+                    petal.setAttribute("rx", rx);
+                    petal.setAttribute("ry", ry);
+                    petal.setAttribute("transform", `rotate(${rotate}, ${cx}, ${cy})`);
+                    petal.setAttribute("fill", "var(--pale-rose)");
+                    
+                    svg.appendChild(petal);
+                }
+                
+                // Center
+                const center = document.createElementNS(svgNS, "circle");
+                center.setAttribute("cx", "50");
+                center.setAttribute("cy", "50");
+                center.setAttribute("r", "6");
+                center.setAttribute("fill", "#ffd700");
+                center.setAttribute("opacity", "0.8");
+                svg.appendChild(center);
+                
+                // Add shine effect
+                const shine = document.createElementNS(svgNS, "circle");
+                shine.setAttribute("cx", "45");
+                shine.setAttribute("cy", "45");
+                shine.setAttribute("r", "3");
+                shine.setAttribute("fill", "white");
+                shine.setAttribute("opacity", "0.3");
+                svg.appendChild(shine);
+                
+                svg.style.animation = "bloom 0.8s ease-out forwards";
+                
+            } else {
+                // Create a simple rose bud
+                const bud = document.createElementNS(svgNS, "ellipse");
+                bud.setAttribute("cx", "50");
+                bud.setAttribute("cy", "50");
+                bud.setAttribute("rx", "15");
+                bud.setAttribute("ry", "20");
+                bud.setAttribute("fill", "var(--rose-muted)");
+                
+                // Add gradient to bud
+                const gradient = document.createElementNS(svgNS, "linearGradient");
+                gradient.setAttribute("id", "budGradient");
+                gradient.setAttribute("x1", "0%");
+                gradient.setAttribute("y1", "0%");
+                gradient.setAttribute("x2", "100%");
+                gradient.setAttribute("y2", "100%");
+                
+                const stop1 = document.createElementNS(svgNS, "stop");
+                stop1.setAttribute("offset", "0%");
+                stop1.setAttribute("stop-color", "var(--accent-subtle)");
+                
+                const stop2 = document.createElementNS(svgNS, "stop");
+                stop2.setAttribute("offset", "100%");
+                stop2.setAttribute("stop-color", "var(--rose-muted)");
+                
+                gradient.appendChild(stop1);
+                gradient.appendChild(stop2);
+                svg.appendChild(gradient);
+                bud.setAttribute("fill", "url(#budGradient)");
+                
+                // Add leaf to bud
+                const leaf = document.createElementNS(svgNS, "ellipse");
+                leaf.setAttribute("cx", "65");
+                leaf.setAttribute("cy", "65");
+                leaf.setAttribute("rx", "8");
+                leaf.setAttribute("ry", "4");
+                leaf.setAttribute("transform", "rotate(45, 65, 65)");
+                leaf.setAttribute("fill", "#8db596");
+                leaf.setAttribute("opacity", "0.7");
+                
+                svg.appendChild(bud);
+                svg.appendChild(leaf);
+            }
+            
+            return svg;
+        }
+        
+        // Create floating petals
+        function createPetals() {
+            const container = document.getElementById('petalsContainer');
+            const petalCount = 15;
+            
+            for (let i = 0; i < petalCount; i++) {
+                const petal = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+                petal.setAttribute("viewBox", "0 0 20 20");
+                petal.classList.add("petal-svg");
+                
+                const left = Math.random() * 100;
+                const delay = Math.random() * 15;
+                const duration = Math.random() * 10 + 15;
+                const colorVar = Math.random();
+                
+                const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                path.setAttribute("d", "M10,2 C12,1 16,3 18,7 C20,11 19,16 15,18 C11,20 6,19 3,15 C0,11 2,5 6,3 C8,2 9,2 10,2 Z");
+                
+                if(colorVar > 0.7) {
+                    path.setAttribute("fill", "var(--accent-subtle)");
+                } else if(colorVar > 0.4) {
+                    path.setAttribute("fill", "var(--rose-muted)");
+                } else {
+                    path.setAttribute("fill", "var(--pale-rose)");
+                }
+                
+                petal.appendChild(path);
+                petal.style.left = `${left}%`;
+                petal.style.animationDelay = `${delay}s`;
+                petal.style.animationDuration = `${duration}s`;
+                
+                container.appendChild(petal);
+            }
+        }
+        
+        // Rose Messages (Marathi & English)
+        const roseMessages = [
+            "Tu mazi favorite person aahes. Tuzyasathi maza love kadhich kami nahi honar.",
+            "Tuzi smile khup beautiful aahe, ti pahili ki maza day ekdam perfect hoto.",
+            "Mala tujhi khup miss yetiye. Tu mazyasathi everything aahes.",
+            "Sobat aslo ki time kasa jato kalatch nahi. Tu mazi life khup special banavli aahes.",
+            "Always sobat raha, karan maza world tuzya shivay incomplete aahe.",
+            "Tuzi har ek gosht mazyasathi special aahe. Tu maza khara saathi aahes.",
+            "Tujhya bina maza kay rahil? Tuzach presence mazyasathi enough aahe.",
+            "Har roz tula bhetayla milto te maza lucky charm aahe.",
+            "Tujhya sobat che moments saglyat precious aahet mala.",
+            "Tu mazyasathi ek rose sarkha delicate ani beautiful aahes."
+        ];
+        
+        // Love Notes Data (Replaces photos)
+        const loveNotes = [
+            { text: "The way you laugh at my silly jokes makes me want to tell them forever.", date: "Always" },
+            { text: "I don't need a special day to tell you how much you mean to me.", date: "Every Day" },
+            { text: "Your presence turns ordinary moments into beautiful memories.", date: "Forever" },
+            { text: "Even on our toughest days, I'm grateful we're facing them together.", date: "Through Everything" },
+            { text: "The simplest moments with you are the ones I cherish most.", date: "Treasures" },
+            { text: "You are my calm in the chaos, my peace in the storm.", date: "My Anchor" }
+        ];
+        
+        let revealedRoses = 0;
+        const totalRoses = 9;
+        
+        // Create Rose Game
+        function createRoseGame() {
+            const garden = document.getElementById('roseGarden');
+            garden.innerHTML = '';
+            
+            // Shuffle messages
+            const shuffledMessages = [...roseMessages].sort(() => Math.random() - 0.5);
+            
+            // Create 9 roses
+            for (let i = 0; i < totalRoses; i++) {
+                const rose = document.createElement('div');
+                rose.classList.add('rose-item');
+                rose.dataset.index = i;
+                rose.dataset.message = shuffledMessages[i];
+                
+                // Add unbloomed rose SVG
+                const roseSVG = createRoseSVG(1, false);
+                rose.appendChild(roseSVG);
+                
+                // Click event
+                rose.addEventListener('click', function() {
+                    revealRoseMessage(this);
+                });
+                
+                // Touch event for mobile
+                rose.addEventListener('touchstart', function(e) {
+                    e.preventDefault();
+                    // Visual feedback
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 200);
+                }, { passive: false });
+                
+                garden.appendChild(rose);
+            }
+        }
+        
+        // Show Message in Popup - FIXED FOR ALL DEVICES
+        function revealRoseMessage(roseElement) {
+            if (roseElement.classList.contains('revealed')) return;
+            
+            const message = roseElement.dataset.message;
+            
+            // Mark as revealed
+            roseElement.classList.add('revealed');
+            
+            // Update the rose to bloomed version
+            const oldSVG = roseElement.querySelector('.rose-svg');
+            if (oldSVG) {
+                const newSVG = createRoseSVG(1, true);
+                roseElement.replaceChild(newSVG, oldSVG);
+            }
+            
+            // Show message in popup
+            showMessagePopup(message);
+            
+            // Update counter
+            revealedRoses++;
+            
+            // Special message when all roses are revealed
+            if (revealedRoses === totalRoses) {
+                setTimeout(() => {
+                    showMessagePopup("Tumchya sobatche har ek pal mazyasathi precious aahe. Thank you for being you.");
+                }, 1000);
+            }
+        }
+        
+        // Show Message Popup - FIXED FOR ALL DEVICES
+        function showMessagePopup(message) {
+            const popup = document.getElementById('messagePopup');
+            const messageText = document.getElementById('messageText');
+            const messageRose = document.getElementById('messageRose');
+            
+            // Clear previous rose
+            messageRose.innerHTML = '';
+            
+            // Add new rose
+            const roseSVG = createRoseSVG(1.5, true);
+            messageRose.appendChild(roseSVG);
+            
+            // Set message text
+            messageText.textContent = `"${message}"`;
+            
+            // Show popup
+            popup.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Force a reflow to ensure animation
+            void popup.offsetWidth;
+        }
+        
+        // Close Message Popup
+        function closeMessagePopup() {
+            const popup = document.getElementById('messagePopup');
+            popup.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Create Love Notes Section
+        function createLoveNotes() {
+            const container = document.getElementById('notesContainer');
+            
+            loveNotes.forEach((note, index) => {
+                const card = document.createElement('div');
+                card.className = 'note-card';
+                
+                const text = document.createElement('div');
+                text.className = 'note-text';
+                text.textContent = note.text;
+                
+                const date = document.createElement('div');
+                date.className = 'note-date';
+                date.textContent = note.date;
+                
+                card.appendChild(text);
+                card.appendChild(date);
+                container.appendChild(card);
+            });
+        }
+        
+        // Name Management
+        function setupNameSection() {
+            const namePopup = document.getElementById('namePopup');
+            const heartBtn = document.getElementById('heartBtn');
+            const nameInput = document.getElementById('nameInput');
+            const nameSaveBtn = document.getElementById('nameSaveBtn');
+            const girlfriendName = document.getElementById('girlfriendName');
+            
+            // Load saved name
+            const savedName = localStorage.getItem('girlfriendName');
+            if (savedName) {
+                girlfriendName.textContent = savedName;
+            }
+            
+            // Open name popup
+            heartBtn.addEventListener('click', () => {
+                namePopup.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                nameInput.focus();
+                nameInput.value = girlfriendName.textContent || '';
+            });
+            
+            // Save name
+            nameSaveBtn.addEventListener('click', () => {
+                const name = nameInput.value.trim();
+                if (name) {
+                    girlfriendName.textContent = name;
+                    localStorage.setItem('girlfriendName', name);
+                    namePopup.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // Close popup when clicking outside
+            namePopup.addEventListener('click', (e) => {
+                if (e.target === namePopup) {
+                    namePopup.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // Enter key to save
+            nameInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    nameSaveBtn.click();
+                }
+            });
+        }
+        
+        // Scroll Progress
+        function updateScrollProgress() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            const progressBar = document.getElementById("scrollProgress");
+            if (progressBar) {
+                progressBar.style.width = scrolled + "%";
+            }
+        }
+        
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', () => {
+            // Create roses
+            const heroRose = document.getElementById('heroRose');
+            heroRose.appendChild(createRoseSVG(2, true));
+            
+            const footerRose = document.getElementById('footerRose');
+            footerRose.appendChild(createRoseSVG(1.2, true));
+            
+            createPetals();
+            createRoseGame();
+            createLoveNotes();
+            setupNameSection();
+            
+            // Setup event listeners
+            document.getElementById('closeMessageBtn').addEventListener('click', closeMessagePopup);
+            
+            // Close message popup when clicking outside
+            document.getElementById('messagePopup').addEventListener('click', (e) => {
+                if (e.target === document.getElementById('messagePopup')) {
+                    closeMessagePopup();
+                }
+            });
+            
+            // Escape key to close popups
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeMessagePopup();
+                    const namePopup = document.getElementById('namePopup');
+                    if (namePopup.classList.contains('active')) {
+                        namePopup.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    }
+                }
+            });
+            
+            // Set up scroll progress
+            window.addEventListener('scroll', updateScrollProgress);
+            
+            // Fade in elements
+            const elementsToFade = document.querySelectorAll('.hero-content, .section-title');
+            elementsToFade.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.animation = `fadeInUp 1s ease ${0.3 + index * 0.2}s forwards`;
+            });
+            
+            // Ensure popups work on all devices
+            console.log("Rose Day website initialized successfully!");
+        });
+        
+        // Make sure popups work on mobile touch
+        document.addEventListener('touchstart', function() {}, {passive: true});
+    </script>
+</body>
+</html>
